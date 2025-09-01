@@ -1,0 +1,21 @@
+# Cloudflare Pages Build Configuration
+# This tells Cloudflare Pages how to build our static site
+
+[build]
+  # Since this is a static HTML/CSS/JS project, no build command needed
+  command = ""
+  
+  # The directory containing our built files (current directory)
+  publish = "."
+
+[build.environment]
+  # No environment variables needed for static files
+
+# Headers for better security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self' https://api.cloudflare.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com;"

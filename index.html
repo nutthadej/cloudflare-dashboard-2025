@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudflare Auto-Update Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fab fa-cloudflare"></i> Cloudflare Dashboard</h1>
+            <div class="status">
+                <span id="status-indicator" class="status-dot offline"></span>
+                <span id="status-text">Offline</span>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="card">
+                <h2>Cloudflare Zone Connection</h2>
+                <div class="repo-info">
+                    <div class="info-item">
+                        <label>API Token:</label>
+                        <input type="password" id="api-token-input" placeholder="Your Cloudflare API Token" value="">
+                        <button id="save-token-btn" class="btn-primary">Save Token</button>
+                    </div>
+                    <div class="info-item" style="margin-top: 15px;">
+                        <label>Zone/Domain:</label>
+                        <input type="text" id="repo-input" placeholder="domain.com หรือ Zone ID" value="">
+                        <button id="connect-btn" class="btn-primary">Connect</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" id="repo-details" style="display: none;">
+                <h2>Zone Details</h2>
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <strong id="repo-name">Zone Name</strong>
+                            <p id="repo-description">Status & Plan</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-dns"></i>
+                        <div>
+                            <strong id="repo-stars">0</strong>
+                            <p>DNS Records</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <strong id="repo-forks">Unknown</strong>
+                            <p>SSL Status</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-code"></i>
+                        <div>
+                            <strong id="repo-issues">OFF</strong>
+                            <p>Dev Mode</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="last-update">
+                    <i class="fas fa-clock"></i>
+                    <span>Last updated: <span id="last-update">Never</span></span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>DNS Records</h2>
+                <div id="commits-list" class="commits-list">
+                    <p class="no-data">Connect to a zone to see DNS records</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Auto-Update Settings</h2>
+                <div class="settings">
+                    <label class="switch">
+                        <input type="checkbox" id="auto-update-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span>Enable auto-update (every 30 seconds)</span>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Cloudflare Auto-Update Dashboard</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
