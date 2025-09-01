@@ -33,19 +33,36 @@ class CloudflareDashboard {
     }
 
     bindEvents() {
-        this.elements.connectBtn.addEventListener('click', () => this.connectToZone());
-        this.elements.repoInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.connectToZone();
-        });
-        this.elements.autoUpdateToggle.addEventListener('change', (e) => {
-            this.toggleAutoUpdate(e.target.checked);
-        });
+        // ตรวจสอบว่า element มีอยู่ก่อน bind
+        const saveTokenBtn = document.getElementById('save-token-btn');
+        const apiTokenInput = document.getElementById('api-token-input');
+        const autoUpdateToggle = document.getElementById('auto-update-toggle');
         
-        // Bind events สำหรับ API Token
-        document.getElementById('save-token-btn').addEventListener('click', () => this.saveApiToken());
-        document.getElementById('api-token-input').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.saveApiToken();
-        });
+        if (this.elements.connectBtn) {
+            this.elements.connectBtn.addEventListener('click', () => this.connectToZone());
+        }
+        
+        if (this.elements.repoInput) {
+            this.elements.repoInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') this.connectToZone();
+            });
+        }
+        
+        if (autoUpdateToggle) {
+            autoUpdateToggle.addEventListener('change', (e) => {
+                this.toggleAutoUpdate(e.target.checked);
+            });
+        }
+        
+        if (saveTokenBtn) {
+            saveTokenBtn.addEventListener('click', () => this.saveApiToken());
+        }
+        
+        if (apiTokenInput) {
+            apiTokenInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') this.saveApiToken();
+            });
+        }
     }
 
     loadSavedSettings() {
